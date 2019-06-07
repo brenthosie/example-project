@@ -1,4 +1,5 @@
-export default function (state = [], action) {
+import { combineReducers } from 'redux'
+const todos = (state = [], action) => {
   switch (action.type) {
     case 'set_todos':
       return action.payload.todos
@@ -6,5 +7,7 @@ export default function (state = [], action) {
       return state
   }
 }
+
+export default combineReducers({ todos })
 
 export const getTodos = state => state.myDay.todos
