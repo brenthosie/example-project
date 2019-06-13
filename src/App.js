@@ -1,26 +1,17 @@
 
 import React from 'react'
-import { connect } from 'react-redux'
-import { dispatchClick, buttonClick } from './actions/test'
+import { Switch, Route } from 'react-router-dom'
+import Home from './components/Home'
+import About from './components/About'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+export default class App extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
-        <button onClick={this.props.handleClick}>call api</button>
-        <button onClick={this.props.lightItUp}>ligh it up</button>
-      </React.Fragment>
+      <Switch>
+        <Route path={'/'} exact component={Home} />
+        <Route path={'/about'} exact component={About} />
+      </Switch>
     )
   }
 }
-
-const mapDispatchToProps = {
-  handleClick: dispatchClick,
-  lightItUp: buttonClick,
-}
-
-export default connect(null, mapDispatchToProps)(App)
